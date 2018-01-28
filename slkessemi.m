@@ -1,10 +1,10 @@
-function [result]= slkessemi(filename, K,y,alpha,beta,mu,E,Y1,Y2,Z,k,distX1)  %K大概是我们的X？
+function [result]= slkessemi(K,y,alpha,beta,mu,E,Y1,Y2,Z,k,distX1,r)  %K大概是我们的X？
  %beta = betalist(jj);
 
  [gamma] = cal_gamma(K,distX1,beta,k);
 % for ij = 1:length(mulist)
  %mu= mulist(ij);
- disp([alpha,beta,mu])
+ %disp([alpha,beta,mu])
  for i = 1:200
      D =  updateD(E,K,Y1,Y2,mu,Z,gamma);
      distX = L2_distance_1(D,D);
@@ -23,9 +23,9 @@ function [result]= slkessemi(filename, K,y,alpha,beta,mu,E,Y1,Y2,Z,k,distX1)  %K
 L=(S+S')/2;
 
 %loop
-for r = 0.1:0.2:0.5
- dlmwrite(filename,r,'-append','delimiter','\t','newline','pc');
-    for it = 1:20
+%for r = 0.1:0.1
+% dlmwrite(filename,r,'-append','delimiter','\t','newline','pc');
+for it = 1:20
 
         [m,n]=size(K);
         c=length(unique(y)); % number of class
@@ -98,11 +98,9 @@ for r = 0.1:0.2:0.5
         end
         result(it) = cnt/uc;
         
-        dlmwrite(filename,[result(it)],'-append','delimiter','\t','newline','pc');
-    end
-    meanacc=mean(result)
-    stdacc=std(result)
-    dlmwrite(filename,[alpha,beta,mu,r,meanacc,stdacc],'-append','delimiter','\t','newline','pc');
-   
+        %dlmwrite(filename,[result(it)],'-append','delimiter','\t','newline','pc');
 end
+
+   
+%end
 
