@@ -1,2 +1,3 @@
-# Secret
-emmm... Robust Graph Learning for Clustering and Semi-Supervised Classification
+# IHMSC2018
+Robust Graph Learning for Semi-Supervised Classification
+
