@@ -1,11 +1,11 @@
 
-load('YALE_165n_1024d_15c_zscore_uni.mat');
+load('YALE_165n_1024d_15c_uni.mat');
 X=X';
 [m,n]=size(X);
 k=10;
 mu = .5; 
-alpha = 0.01;
-beta = 0.01;
+alpha = 100;
+beta = 1;
 Y1 =zeros(m,n) ;
 Y2 =zeros(m,n) ;
 E = zeros(m,n);
